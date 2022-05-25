@@ -33,12 +33,10 @@ $(function () {
   //   $('#btn-hover').hover(function () {
   //     alert('Button was hovered.');
   //   });
-
   //   $('.green-box').hover(function () {
   //     $(this).text('I was hovered.');
   //   });
-
-  let blueBox = $('.blue-box');
+  //   let blueBox = $('.blue-box');
   //   blueBox.mouseenter(function () {
   // $(this).stop().fadeTo(500, 0.7);
   // $(this)
@@ -54,17 +52,39 @@ $(function () {
   //   });
   // mini-challenge: re-write the above code so it works with this new syntax below
   // hover(handlerIn, handlerOut)
-  blueBox.hover(
-    function () {
-      $(this)
-        .stop()
-        .animate({ height: '200px', width: '200px', opacity: '0.7' });
-    },
-    function () {
-      $(this)
-        .stop()
-        .animate({ height: '80px', width: '80px', opacity: '1' });
-    }
-  );
+  //   blueBox.hover(
+  //     function () {
+  //       $(this)
+  //         .stop()
+  //         .animate({ height: '200px', width: '200px', opacity: '0.7' });
+  //     },
+  //     function () {
+  //       $(this)
+  //         .stop()
+  //         .animate({ height: '80px', width: '80px', opacity: '1' });
+  //     }
+  //   );
   //   SUCCESS!! I LOVE jQuery
+  //   *** 34 ***
+  //  .on("click", function(){...})
+  //   $('html').on('click keydown', function () {
+  //     console.log('Event happened');
+  //   });
+  // mini-challenge: switch something once it is clicked, use the .on() not .click()
+  //   $('.red-box').on('click', function () {
+  //     $(this).css('background-color', 'yellow');
+  //   });
+  //   SUCCESS
+  //   he wanted an image changed but I didn't have it anyway
+  // his method
+  //   let images = ['path', 'path', 'path'];
+  //   let i = 0;
+  //   $('.gallery')
+  //     .find('img')
+  //     .on('click', function () {
+  //       i = (i + 1) % images.length;
+  //       $(this).fadeOut(function () {
+  //         $(this).attr('src', images[i]);
+  //       });
+  //     });
 });
