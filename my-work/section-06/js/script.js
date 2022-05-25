@@ -146,4 +146,20 @@ $(function () {
   // $('body').on('mouseenter', 'li', function () {
   //   $(this).css('color', 'grey');
   // });
+  // use delegated events to create a todo list
+  // *** 37 ***
+  // $('#btn-click').click(
+  //   {
+  //     user: 'Peter',
+  //     domain: 'persommerhoff.com',
+  //   },
+  //   function (event) {
+  //     greetUser(event.data);
+  //   }
+  // );
+  // function greetUser(userdata) {
+  //   username = userdata.user || 'Anonymous';
+  //   domain = userdata.domain || 'example.com';
+  //   alert('Welcome back ' + username + ' from ' + domain + '!');
+  // }
 });
