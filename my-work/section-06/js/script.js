@@ -89,12 +89,10 @@ $(function () {
   //     });
   //   *** 35 ***
   // .on("click", function(){...})
-  function logEvent() {
-    console.log('Mouse was clicked or a key was pressed.');
-  }
-
-  $('html').on('click keydown', logEvent);
-
+  // function logEvent() {
+  //   console.log('Mouse was clicked or a key was pressed.');
+  // }
+  // $('html').on('click keydown', logEvent);
   // mini-challenge: modularize this code
   // $('.gallery')
   //   .find('img')
@@ -107,30 +105,45 @@ $(function () {
   // let image = $('.gallery').find('img');
   // let imageGallery = ['path', 'path', 'path'];
   // let i = 0;
-
   // function switchImg(insertImageHere) {
   //   i = (i + 1) % image.length;
   //   $(this).fadeOut(function () {
   //     $(this).attr('src', imageGallery[i].fadeIn());
   //   });
   // }
-
   // imageGallery.on('click', switchImg);
-
   // what he did
-  var images = [
-    'images/laptop-mobile_small.jpg',
-    'images/laptop-on-table_small.jpg',
-    'images/people-office-group-team_small.jpg',
-  ];
-  var i = 0;
-  var galleryImage = $('.gallery').find('img');
-  galleryImage.on('click', switchToNextImage);
-
-  function switchToNextImage() {
-    i = (i + 1) % images.length;
-    galleryImage.fadeOut(function () {
-      galleryImage.attr('src', images[i]).fadeIn();
-    });
-  }
+  // var images = [
+  //   'images/laptop-mobile_small.jpg',
+  //   'images/laptop-on-table_small.jpg',
+  //   'images/people-office-group-team_small.jpg',
+  // ];
+  // var i = 0;
+  // var galleryImage = $('.gallery').find('img');
+  // galleryImage.on('click', switchToNextImage);
+  // function switchToNextImage() {
+  //   i = (i + 1) % images.length;
+  //   galleryImage.fadeOut(function () {
+  //     galleryImage.attr('src', images[i]).fadeIn();
+  //   });
+  // }
+  // *** 36 ***
+  // $('p').click(function () {
+  //   $(this).slideUp();
+  // });
+  // $('#content').append('<p>Dynamically added paragraph!</p>');
+  // Delegated events
+  // $('#content').on('click', 'p', function () {
+  //   $(this).slideUp(); // this refers to the p tag and not the parent #content
+  // });
+  // $('#content').append('<p>Dynamically added paragraph!</p>');
+  // mini-challenge: add mouseenter events on the body tag which will delegate all the li to change the font color
+  // $('body').on('mouseenter', 'li', function () {
+  //   $(this).css('color', 'red');
+  // });
+  // success!!
+  // his way
+  // $('body').on('mouseenter', 'li', function () {
+  //   $(this).css('color', 'grey');
+  // });
 });
