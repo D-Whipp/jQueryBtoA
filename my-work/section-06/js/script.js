@@ -29,5 +29,42 @@ $(function () {
   //   $('.green-box').hover(function () {
   //     $(this).text('I was hovered');
   //   });
-  
+  //   33
+  //   $('#btn-hover').hover(function () {
+  //     alert('Button was hovered.');
+  //   });
+
+  //   $('.green-box').hover(function () {
+  //     $(this).text('I was hovered.');
+  //   });
+
+  let blueBox = $('.blue-box');
+  //   blueBox.mouseenter(function () {
+  // $(this).stop().fadeTo(500, 0.7);
+  // $(this)
+  //   .stop()
+  //   .animate({ height: '200px', width: '200px', opacity: '0.7' });
+  // $(this).stop().animate({ width: '200px' });
+  //   });
+  //   blueBox.mouseleave(function () {
+  // $(this).stop().fadeTo(500, 1.0);
+  //     $(this)
+  //       .stop()
+  //       .animate({ height: '80px', width: '80px', opacity: '1' }); // $(this).stop().animate({ width: '80px' });
+  //   });
+  // mini-challenge: re-write the above code so it works with this new syntax below
+  // hover(handlerIn, handlerOut)
+  blueBox.hover(
+    function () {
+      $(this)
+        .stop()
+        .animate({ height: '200px', width: '200px', opacity: '0.7' });
+    },
+    function () {
+      $(this)
+        .stop()
+        .animate({ height: '80px', width: '80px', opacity: '1' });
+    }
+  );
+  //   SUCCESS!! I LOVE jQuery
 });
