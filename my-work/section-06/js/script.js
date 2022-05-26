@@ -162,26 +162,54 @@ $(function () {
   //   domain = userdata.domain || 'example.com';
   //   alert('Welcome back ' + username + ' from ' + domain + '!');
   // }
-
   // *** 38 ***
-  var galleryItems = $('.gallery').find('img');
-  galleryItems.css('width', '33%').css('opacity', '0.7');
-
-  galleryItems.mouseenter(function () {
-    $(this).stop().fadeTo(500, 1);
-  });
-
-  galleryItems.mouseleave(function () {
-    $(this).stop().fadeTo(500, 0.7);
-  });
-
-  galleryItems.click(function () {
-    var source = $(this).attr('src');
-    var image = $('<img>').attr('src', source).css('width', '100%');
-    $('.lightbox').empty().append(image).fadeIn(2000);
-  });
+  // var galleryItems = $('.gallery').find('img');
+  // galleryItems.css('width', '33%').css('opacity', '0.7');
+  // galleryItems.mouseenter(function () {
+  //   $(this).stop().fadeTo(500, 1);
+  // });
+  // galleryItems.mouseleave(function () {
+  //   $(this).stop().fadeTo(500, 0.7);
+  // });
+  // galleryItems.click(function () {
+  //   var source = $(this).attr('src');
+  //   var image = $('<img>').attr('src', source).css('width', '100%');
+  //   $('.lightbox').empty().append(image).fadeIn(1200);
+  // });
   // mini-challenge: add click handler to lightbox to make it fade out again and stop animations currently going on
-  $('.lightbox').click(function () {
-    $(this).stop().fadeOut(800);
+  // $('.lightbox').click(function () {
+  //   $(this).stop().fadeOut(800);
+  // });
+  // *** 39 ***
+  // $('html').keydown(function (event) {
+  //   console.log(event);
+  //   console.log(event.which);
+  // });
+  // mini-challenge: find out the key code for the right arroy key
+  // then make blue box move to the right by 10px when the right
+  // arrow key is pressed. use margin-left.
+  // key code for right arrow: 39
+  // $('html').keydown(function (event) {
+  // console.log('line 193');
+  // console.log(event.key);
+  // if (event.key === 'ArrowRight') {
+  // console.log('line 195');
+  //     $('.blue-box').css('margin-left', '+=10px');
+  //   } else if (event.key === 'ArrowDown') {
+  //     $('.blue-box').css('margin-top', '+=10px');
+  //   }
+  // });
+  // SUCCESS!!
+  // his way
+  var ARROW_RIGHT = 39;
+  $('html').keydown(function (event) {
+    if (event.which == ARROW_RIGHT) {
+      $('.blue-box').stop().animate(
+        {
+          marginLeft: '+=10px',
+        },
+        50
+      );
+    }
   });
 });
