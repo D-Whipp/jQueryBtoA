@@ -48,17 +48,17 @@
   }
   
   .gallery {
-    height: 400px;
-    width: 600px;
+    /* height: 400px;
+    width: 600px; */
     position: relative;
-    overflow: hidden;
+    /* overflow: hidden; */
   }
   
   .gallery img {
-    position: absolute;
-    height: 400px;
+    /* position: absolute; */
+    /* height: 400px;
     width: 600px;
-    left: 600px;
+    left: 600px; */
   }
   
   .gallery img:nth-child(1) {
