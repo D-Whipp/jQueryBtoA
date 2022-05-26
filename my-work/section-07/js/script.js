@@ -37,4 +37,32 @@ $(function () {
   //     }
   //   });
   // *** 41 ***
+  //   $('#checkbox').change(function () {
+  //     var isChecked = $(this).is(':checked'); // prop("checked")
+  //     if (isChecked) {
+  //       $(this)
+  //         .add("label[for='checkbox']")
+  //         .css('box-shadow', '0 0 4px #181');
+  //     } else {
+  //       $(this)
+  //         .add("label[for='cb']")
+  //         // i added this to fix an error where checkbox lable stayed red
+  //         .add("label[for='checkbox']")
+  //         .css('box-shadow', '0 0 4px #811');
+  //     }
+  //   });
+  //   mini-challenge: add a select element to html for options that will alert the value when the value changes (alert current selection)
+  //   $('#selection').change(function () {
+  //     let currentSelection = $(this).text();
+  // console.log($(this).val());
+  // alert($(this).val());
+  // console.log(currentSelection);
+  //   });
+  //   SUCCESS!
+  // his way
+  //   $('#selection').change(function () {
+  //     var selectedOption = $(this).find(':selected').text();
+  //     alert(selectedOption);
+  //   });
+  // *** 42 ***
 });
