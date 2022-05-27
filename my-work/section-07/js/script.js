@@ -65,4 +65,120 @@ $(function () {
   //     alert(selectedOption);
   //   });
   // *** 42 ***
+  //   $('#form').submit(function (event) {
+  //     var textarea = $('#message');
+  //     if (textarea.val().trim() == '') {
+  //       textarea.css('box-shadow', '0 0 4px #811');
+  //       event.preventDefault();
+  //     } else {
+  //       // form will be submitted
+  //     }
+  //   });
+  //   *** 43 ***
+  $('#form').submit(function (event) {
+    var name = $('#name').val();
+    var password = $('#password').val();
+    var message = $('#message').val();
+    var checked = $('#checkbox').is(':checked');
+
+    validateNameField(name, event);
+    validatePasswordField(password, event);
+    validateMessageField(message, event);
+    validateCheckboxField(checked, event);
+    // validatePasswordField(password, event);
+    // validateMessageField(message, event);
+
+    // event.preventDefault();
+  });
 });
+
+// function validateCheckboxField(isChecked, event) {
+//   if (!isChecked) {
+//     $('#checkbox-feedback').text('Must check checkbox');
+//     event.preventDefault();
+//   } else {
+//     $('#checkbox-feedback').text('');
+//   }
+// }
+
+// function validateMessageField(message, event) {
+//   if (!isValidateMessage(message)) {
+//     $('#message-feedback').text(
+//       'Message must be at least 10 characters.'
+//     );
+//     event.preventDefault();
+//   } else {
+//     $('message-feedback').text('');
+//   }
+// }
+
+// function isValidateMessage(message) {
+//   return message.length >= 10;
+// }
+
+// function validatePasswordField(password, event) {
+//   if (!isValidPassword(password)) {
+//     $('#password-feedback').text(
+//       'Password must be longer than 4 characters.'
+//     );
+//     event.preventDefault();
+//   } else {
+//     $('password-feedback').text('');
+//   }
+// }
+
+// function isValidPassword(password) {
+//   return password.length >= 4;
+// }
+
+function validateNameField(name, event) {
+  if (!isValidName(name)) {
+    $('#name-feedback').text('Please enter a valid name');
+    event.preventDefault();
+  } else {
+    $('#name-feedback').text('');
+  }
+}
+
+function isValidName(name) {
+  return name.length >= 2;
+}
+// mini-challenge: add validation for password field, message field, and checkbox field
+// SUCCESS!!
+// what he did
+function validatePasswordField(password, event) {
+  if (!isValidPassword(password)) {
+    $('#password-feedback').text(
+      'The password should have at least 6 characters and contain a number'
+    );
+    event.preventDefault();
+  } else {
+    $('#password-feedback').text('');
+  }
+}
+
+function isValidPassword(password) {
+  return password.length >= 6 && /.*[0-9].*/.test(password);
+}
+
+function validateMessageField(message, event) {
+  if (!isValidMessage(message)) {
+    $('#message-feedback').text('Please enter some text');
+    event.preventDefault();
+  } else {
+    $('#message-feedback').text('');
+  }
+}
+
+function isValidMessage(message) {
+  return message.trim() != '';
+}
+
+function validateCheckboxField(isChecked, event) {
+  if (!isChecked) {
+    $('#checkbox-feedback').text('Please agree to this');
+    event.preventDefault();
+  } else {
+    $('#checkbox-feedback').text('');
+  }
+}
