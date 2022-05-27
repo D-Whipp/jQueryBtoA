@@ -1,10 +1,11 @@
 $(function () {
+  var form = $('#form');
+  enableFastFeedback(form);
 
-  var form = $("#form");
   // When the submit event comes in, we first validate all form fields
   // and abort submission if one of them is invalid. Also, we highlight all
   // invalid fields so that the user knows what to fix.
-  $('#form').submit(function (event) {
+  form.submit(function (event) {
     // First, read out all entered values.
     var name = $('#name').val();
     var password = $('#password').val();
@@ -18,46 +19,90 @@ $(function () {
     validateCheckboxField(checked, event);
   });
 
-  // == NEW PART ==
-  // In addition to the previous form validation code, we now provide faster
-  // feedback to the user, namely when moving to the next input element.
-  enableFastFeedback($('#form'));
-
   function enableFastFeedback(formElement) {
     var nameInput = formElement.find('#name');
     var passwordInput = formElement.find('#password');
     var messageInput = formElement.find('#message');
-    var checkboxInput = formElement.find('#checkbox');
+    var checkboxInput = formElement.find('checkbox');
 
-    nameInput.blur(function () {
+    nameInput.blur(function (event) {
       var name = $(this).val();
-      highlight($(this), isValidName(name));
+      validateNameField(name, event);
+
+      if (!isValidName(name)) {
+        $(this).css({
+          'box-shadow': '0 0 7px #811',
+          border: '1px solid #600',
+        });
+      } else {
+        $(this).css({
+          'box-shadow': '0 0 7px #060',
+          border: '1px solid #060',
+        });
+      }
     });
 
-    passwordInput.blur(function () {
-      var password = $(this).val();
-      highlight($(this), isValidPassword(password));
+    passwordInput.blur(function (event) {
+      let password = $(this).val();
+      validatePasswordField(password, event);
+
+      if (!isValidPassword(password)) {
+        $(this).css({
+          'box-shadow': '0 0 7px #811',
+          border: '1px solid #600',
+        });
+      } else {
+        $(this).css({
+          'box-shadow': '0 0 7px #060',
+          border: '1px solid #060',
+        });
+      }
     });
 
-    messageInput.blur(function () {
-      var message = $(this).val();
-      highlight($(this), isValidMessage(message));
+    messageInput.blur(function (event) {
+      let message = $(this).val();
+      validateMessageField(message, event);
+
+      if (!isValidMessage(message)) {
+        $(this).css({
+          'box-shadow': '0 0 7px #811',
+          border: '1px solid #600',
+        });
+      } else {
+        $(this).css({
+          'box-shadow': '0 0 7px #060',
+          border: '1px solid #060',
+        });
+      }
     });
 
-    checkboxInput.change(function () {
-      var isChecked = $(this).is(':checked');
-      highlight($(this), isChecked);
-    });
-  }
+    // checkboxInput.blur(function (event) {
+    //   let checkbox = $(this).val();
+    //   validateCheckboxField(checkbox, event);
 
-  function highlight(element, isValid) {
-    var color = '#811'; // red
-    if (isValid) {
-      color = '#181'; // green
+    //   if (!isChecked(message)) {
+    //     $(this).css({
+    //       'box-shadow': '0 0 7px #811',
+    //       border: '1px solid #600',
+    //     });
+    //   } else {
+    //     $(this).css({
+    //       'box-shadow': '0 0 7px #060',
+    //       border: '1px solid #060',
+    //     });
+    //   }
+    // });
+    function validateCheckboxField(isChecked, event) {
+      if (!isChecked) {
+        $('#checkbox-feedback').text('Please agree to this.');
+        event.preventDefault();
+      } else {
+        $('#checkbox-feedback').text('');
+      }
     }
-
-    element.css('box-shadow', '0 0 4px ' + color);
   }
+
+  // mini-challenge: add fast feed back to the rest of the fields!
 
   // In the following, we define helper functions that each validate
   // one of the inputs. These will be used further down by our validation
