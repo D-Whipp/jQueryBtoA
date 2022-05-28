@@ -23,7 +23,7 @@ $(function () {
     var nameInput = formElement.find('#name');
     var passwordInput = formElement.find('#password');
     var messageInput = formElement.find('#message');
-    var checkboxInput = formElement.find('checkbox');
+    var checkboxInput = formElement.find('#checkbox');
 
     nameInput.blur(function (event) {
       var name = $(this).val();
@@ -76,30 +76,29 @@ $(function () {
       }
     });
 
-    // checkboxInput.blur(function (event) {
-    //   let checkbox = $(this).val();
-    //   validateCheckboxField(checkbox, event);
-
-    //   if (!isChecked(message)) {
-    //     $(this).css({
-    //       'box-shadow': '0 0 7px #811',
-    //       border: '1px solid #600',
-    //     });
-    //   } else {
-    //     $(this).css({
-    //       'box-shadow': '0 0 7px #060',
-    //       border: '1px solid #060',
-    //     });
-    //   }
-    // });
-    function validateCheckboxField(isChecked, event) {
+    // this code is right but it's not creating the border...
+    checkboxInput.change(function (event) {
+      var isChecked = $(this).is(':checked');
+      validateCheckboxField(isChecked, event);
       if (!isChecked) {
-        $('#checkbox-feedback').text('Please agree to this.');
-        event.preventDefault();
+        // I even copied and pasted this from the Q&A with no luck...
+        // $(this).add("label[for='cb']").css({
+        //   'box-shadow': '0 0 4px #811',
+        //   border: '1px solid #800',
+        // });
+        $(this).add("label[for='cb']").css({
+          'box-shadow': '0 0 4px #811',
+          border: '1px solid #600',
+        });
       } else {
-        $('#checkbox-feedback').text('');
+        $(this).add("label[for='cb']").css({
+          'box-shadow': '0 0 4px #181',
+          border: '1px solid #060',
+        });
       }
-    }
+    });
+    // by everything I looked at the above code should work
+    // mini-challenge: completed with the exception of the checkbox, i was way off
   }
 
   // mini-challenge: add fast feed back to the rest of the fields!
