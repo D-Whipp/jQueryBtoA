@@ -86,17 +86,18 @@ $(function () {
         //   'box-shadow': '0 0 4px #811',
         //   border: '1px solid #800',
         // });
-        $(this).add("label[for='cb']").css({
+        $(this).add('#cb').css({
           'box-shadow': '0 0 4px #811',
           border: '1px solid #600',
         });
       } else {
-        $(this).add("label[for='cb']").css({
+        $(this).add('#cb').css({
           'box-shadow': '0 0 4px #181',
           border: '1px solid #060',
         });
       }
     });
+    // FIXED IT!!! hehe...
     // by everything I looked at the above code should work
     // mini-challenge: completed with the exception of the checkbox, i was way off
   }
