@@ -1,0 +1,25 @@
+body {
+  height: 100vh;
+  width: 100vw;
+  background-color: #000;
+}
+
+
+canvas {
+    /* margin: auto; */
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    border: 3px solid #eee;
+    border-radius: 5px;
+    background-color: #121212;
+}
+
+/* #snake {
+    width: 10px;
+    height: 10px;
+    z-index: 1000;
+    position: fixed;
+    background-color: #eee;
+} */
