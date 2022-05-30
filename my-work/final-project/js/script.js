@@ -18,7 +18,12 @@ $(document).ready(function () {
     } else if (event.which === 40) {
       $('#snake').css('margin-top', '+=10px');
     } else if (event.which === 38) {
-      $('#snake').css('margin-top', '-=10px');
+      if ($('#snake').css('marginTop') <= '0px') {
+        $('#snake').css('margin-top', '0px');
+      } else {
+        // console.log($('#snake'));
+        $('#snake').css('margin-top', '-=10px');
+      }
     }
   });
 });
