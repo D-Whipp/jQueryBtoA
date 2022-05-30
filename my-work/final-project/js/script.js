@@ -9,17 +9,30 @@ $(document).ready(function () {
     position: 'absolute',
   });
 
+  // snake movement
   $('html').keydown(function (event) {
     console.log(event.keyCode);
     if (event.which === 39) {
-      $('#snake').css('margin-left', '+=10px');
+      if ($('#snake').css('margin-left') == '390px') {
+        $('#snake').css('margin-left', '390px');
+      } else {
+        $('#snake').css('margin-left', '+=10px');
+      }
     } else if (event.which === 37) {
-      $('#snake').css('margin-left', '-=10px');
+      if ($('#snake').css('margin-left') == '10px') {
+        $('#snake').css('margin-left', '10px');
+      } else {
+        $('#snake').css('margin-left', '-=10px');
+      }
     } else if (event.which === 40) {
-      $('#snake').css('margin-top', '+=10px');
+      if ($('#snake').css('margin-top') == '390px') {
+        $('#snake').css('marmgin-top', '390px');
+      } else {
+        $('#snake').css('margin-top', '+=10px');
+      }
     } else if (event.which === 38) {
-      if ($('#snake').css('marginTop') <= '0px') {
-        $('#snake').css('margin-top', '0px');
+      if ($('#snake').css('marginTop') <= '10px') {
+        $('#snake').css('margin-top', '10px');
       } else {
         // console.log($('#snake'));
         $('#snake').css('margin-top', '-=10px');
