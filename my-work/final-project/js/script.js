@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  //   $('#canvas').css('background-color', '#777');
+  // using jQuery to grab the #snake div and style it
   let snake = $('#snake');
   snake.css({
     'background-color': '#eee',
@@ -7,11 +7,17 @@ $(document).ready(function () {
     height: '10px',
     'z-index': '1000',
     position: 'absolute',
+    marginTop: '10px',
+    marginLeft: '10px',
   });
 
-  // snake movement
+  // snake movement logic
   $('html').keydown(function (event) {
-    console.log(event.keyCode);
+    // console.log(event.keyCode);
+    // using jQuery method event.which to determine which keyboard key was pressed
+    // i'm looking for the arrow keys UP, DOWN, RIGHT, and LEFT
+    // after assessing which arrow key was pressed i add or take away margin from
+    // either the top or left to move the snake accordingly
     if (event.which === 39) {
       if ($('#snake').css('margin-left') == '390px') {
         $('#snake').css('margin-left', '390px');
@@ -39,4 +45,30 @@ $(document).ready(function () {
       }
     }
   });
+  // end snake movement logic
+
+  // create food logic
+  // here jQuery is used to create a div with the id of food
+  // after setting a variable of food to the food div
+  // jQuery is used for styling
+  $('html').prepend("<div id='food'></div>");
+  let food = $('#food');
+
+  // using math to randomly set the food's margin values
+  let xCoord = Math.floor(Math.random() * 390 + 1);
+  console.log(xCoord);
+  let yCoord = Math.floor(Math.random() * 390 + 1);
+  console.log(yCoord);
+
+  food.css({
+    'background-color': '#FF0000',
+    width: '10px',
+    height: '10px',
+    'z-index': '1000',
+    position: 'absolute',
+    marginTop: yCoord,
+    marginLeft: xCoord,
+  });
+  // console.log(food);
+  // end food logic
 });
