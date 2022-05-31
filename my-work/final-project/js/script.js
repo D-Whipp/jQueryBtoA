@@ -1,41 +1,34 @@
 $(document).ready(function () {
-  // function createSnake() {
-  //   // using jQuery to grab the #snake div and style it
-  //   let snake = $('#snake');
-  //   snake.css({
-  //     'background-color': '#eee',
-  //     width: '10px',
-  //     height: '10px',
-  //     'z-index': '1000',
-  //     position: 'absolute',
-  //     marginTop: '10px',
-  //     marginLeft: '10px',
-  //   });
-  // }
+  let snakeXCoord;
+  let snakeYCoord;
+  let coords;
 
-  let snake = $('#snake');
-  snake.css({
-    'background-color': '#eee',
-    width: '10px',
-    height: '10px',
-    'z-index': '1000',
-    position: 'absolute',
-    marginTop: '10px',
-    marginLeft: '10px',
-  });
+  function createSnake() {
+    // using jQuery to grab the #snake div and style it
+    let snake = $('#snake');
+    snake.css({
+      'background-color': '#eee',
+      width: '15px',
+      height: '15px',
+      'z-index': '1000',
+      position: 'absolute',
+      marginTop: '10px',
+      marginLeft: '10px',
+      // borderRadius: '5px',
+    });
+  }
 
-  // console.log(snake.css('marginTop'));
-  // console.log(snake.css("marginLeft"));
+  let snake = new createSnake();
 
   // snake movement logic
-  $('html').keydown(function (event) {
+  function enableFastFeedback(event) {
     // console.log(event.keyCode);
     // using jQuery method event.which to determine which keyboard key was pressed
     // i'm looking for the arrow keys UP, DOWN, RIGHT, and LEFT
     // after assessing which arrow key was pressed i add or take away margin from
     // either the top or left to move the snake accordingly
-    let snakeXCoord = $('#snake').css('margin-left');
-    let snakeYCoord = $('#snake').css('margin-top');
+    snakeXCoord = $('#snake').css('margin-left');
+    snakeYCoord = $('#snake').css('margin-top');
     if (event.which === 39) {
       if ($('#snake').css('margin-left') == '390px') {
         $('#snake').css('margin-left', '390px');
@@ -75,13 +68,11 @@ $(document).ready(function () {
     // console.log(
     //   'X-Coord: ' + snakeXCoord + ' Y-Coord: ' + snakeYCoord
     // );
-    let coords = snakeXCoord + ' ' + snakeYCoord;
-    console.log(coords);
+    coords = snakeXCoord + ' ' + snakeYCoord;
+    // console.log(coords);
     return coords;
-  });
-  // end snake movement logic
+  }
 
-  // console.log(snakeXCoord)
 
   function createFood() {
     // create food logic
@@ -91,14 +82,13 @@ $(document).ready(function () {
     // food is prepend to 'html' for stability
     // appending to snake causes snakelike behavior
     // appending to canvas causes food to disappear
-
     $('html').prepend("<div id='food'></div>");
     let food = $('#food');
 
     // using math to randomly set the food's margin values
-    let xCoord = Math.floor(Math.random() * 370 + 30);
+    let xCoord = Math.floor(Math.random() * 355 + 30);
     // console.log("Food X: ", xCoord);
-    let yCoord = Math.floor(Math.random() * 370 + 30);
+    let yCoord = Math.floor(Math.random() * 355 + 30);
     // console.log("Food Y: ", yCoord);
 
     food.css({
@@ -114,19 +104,6 @@ $(document).ready(function () {
     // end food logic
   }
 
-  function eatFood(snakeXCoord, snakeYCoord, foodXCoord, foodYCoord) {
-    let snakeX = snakeXCoord;
-    let snakeY = snakeYCoord;
-    let foodX = foodXCoord;
-    let foodY = foodYCoord;
-
-    snakeX = $('#snake').css('margin-top');
-    // console.log(snakeX);
-  }
-
-  // console.log(snake);
-
-  eatFood();
+  $('html').keydown(enableFastFeedback);
   createFood();
-  // createSnake();
 });
