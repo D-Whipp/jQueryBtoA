@@ -1,8 +1,4 @@
 $(document).ready(function () {
-  let snakeXCoord;
-  let snakeYCoord;
-  let coords;
-
   function createSnake() {
     // using jQuery to grab the #snake div and style it
     let snake = $('#snake');
@@ -18,6 +14,27 @@ $(document).ready(function () {
     });
   }
 
+  class Snake {
+    constructor() {
+      this.width = '15px';
+      this.height = '15px';
+      this.marginLeft = '10px';
+      this.marginTop = '10px';
+      this.backgroundColor = 'yellow';
+    }
+
+    calcX() {
+      return (this.marginLeft += '5px');
+    }
+
+    calcY() {
+      return (this.marginTop += '5px');
+    }
+  }
+
+  let objSnake = new Snake();
+  console.log(objSnake);
+
   let snake = new createSnake();
 
   // snake movement logic
@@ -27,14 +44,15 @@ $(document).ready(function () {
     // i'm looking for the arrow keys UP, DOWN, RIGHT, and LEFT
     // after assessing which arrow key was pressed i add or take away margin from
     // either the top or left to move the snake accordingly
-    snakeXCoord = $('#snake').css('margin-left');
-    snakeYCoord = $('#snake').css('margin-top');
+    let snakeXCoord = $('#snake').css('margin-left');
+    let snakeYCoord = $('#snake').css('margin-top');
     if (event.which === 39) {
       if ($('#snake').css('margin-left') == '390px') {
         $('#snake').css('margin-left', '390px');
         // snakeXCoord = $('#snake').css('margin-left');
         // console.log('X-Coord: ', snakeXCoord);
       } else {
+        // console.log(this);
         $('#snake').css('margin-left', '+=10px');
         // console.log('X-Coord: ', snakeXCoord);
       }
@@ -69,10 +87,9 @@ $(document).ready(function () {
     //   'X-Coord: ' + snakeXCoord + ' Y-Coord: ' + snakeYCoord
     // );
     coords = snakeXCoord + ' ' + snakeYCoord;
-    // console.log(coords);
-    return coords;
+    console.log(coords);
+    // return coords;
   }
-
 
   function createFood() {
     // create food logic
