@@ -54,6 +54,7 @@ $(document).ready(function () {
       } else {
         // console.log(this);
         $('#snake').css('margin-left', '+=10px');
+        createFood();
         // console.log('X-Coord: ', snakeXCoord);
       }
     } else if (event.which === 37) {
@@ -99,6 +100,8 @@ $(document).ready(function () {
     // food is prepend to 'html' for stability
     // appending to snake causes snakelike behavior
     // appending to canvas causes food to disappear
+    $('#food').remove();
+
     $('html').prepend("<div id='food'></div>");
     let food = $('#food');
 
