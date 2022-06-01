@@ -14,28 +14,37 @@ $(document).ready(function () {
     });
   }
 
-  class Snake {
-    constructor() {
-      this.width = '15px';
-      this.height = '15px';
-      this.marginLeft = '10px';
-      this.marginTop = '10px';
-      this.backgroundColor = 'yellow';
-    }
+  function createFood() {
+    // create food logic
+    // here jQuery is used to create a div with the id of food
+    // after setting a variable of food to the food div
+    // jQuery is used for styling
+    // food is prepend to 'html' for stability
+    // appending to snake causes snakelike behavior
+    // appending to canvas causes food to disappear
+    $('#food').remove();
 
-    calcX() {
-      return (this.marginLeft += '5px');
-    }
+    $('html').prepend("<div id='food'></div>");
+    let food = $('#food');
 
-    calcY() {
-      return (this.marginTop += '5px');
-    }
+    // using math to randomly set the food's margin values
+    let xCoord = Math.floor(Math.random() * 355 + 30);
+    // console.log("Food X: ", xCoord);
+    let yCoord = Math.floor(Math.random() * 355 + 30);
+    // console.log("Food Y: ", yCoord);
+
+    food.css({
+      'background-color': '#FF0000',
+      width: '10px',
+      height: '10px',
+      'z-index': '1000',
+      position: 'absolute',
+      marginTop: yCoord,
+      marginLeft: xCoord,
+    });
+    // console.log(food);
+    // end food logic
   }
-
-  let objSnake = new Snake();
-  console.log(objSnake);
-
-  let snake = new createSnake();
 
   // snake movement logic
   function enableFastFeedback(event) {
@@ -46,6 +55,9 @@ $(document).ready(function () {
     // either the top or left to move the snake accordingly
     let snakeXCoord = $('#snake').css('margin-left');
     let snakeYCoord = $('#snake').css('margin-top');
+    let foodY = $('#food').css('marginTop');
+    let foodX = $('#food').css('marginLeft');
+    console.log(foodX, foodY);
     if (event.which === 39) {
       if ($('#snake').css('margin-left') == '390px') {
         $('#snake').css('margin-left', '390px');
@@ -54,7 +66,8 @@ $(document).ready(function () {
       } else {
         // console.log(this);
         $('#snake').css('margin-left', '+=10px');
-        createFood();
+        // createFood();
+
         // console.log('X-Coord: ', snakeXCoord);
       }
     } else if (event.which === 37) {
@@ -88,42 +101,13 @@ $(document).ready(function () {
     //   'X-Coord: ' + snakeXCoord + ' Y-Coord: ' + snakeYCoord
     // );
     coords = snakeXCoord + ' ' + snakeYCoord;
-    console.log(coords);
+    // console.log(coords);
     // return coords;
   }
 
-  function createFood() {
-    // create food logic
-    // here jQuery is used to create a div with the id of food
-    // after setting a variable of food to the food div
-    // jQuery is used for styling
-    // food is prepend to 'html' for stability
-    // appending to snake causes snakelike behavior
-    // appending to canvas causes food to disappear
-    $('#food').remove();
-
-    $('html').prepend("<div id='food'></div>");
-    let food = $('#food');
-
-    // using math to randomly set the food's margin values
-    let xCoord = Math.floor(Math.random() * 355 + 30);
-    // console.log("Food X: ", xCoord);
-    let yCoord = Math.floor(Math.random() * 355 + 30);
-    // console.log("Food Y: ", yCoord);
-
-    food.css({
-      'background-color': '#FF0000',
-      width: '10px',
-      height: '10px',
-      'z-index': '1000',
-      position: 'absolute',
-      marginTop: yCoord,
-      marginLeft: xCoord,
-    });
-    // console.log(food);
-    // end food logic
-  }
-
+  let food = new createFood();
+  // console.log(food);
+  // console.log(food.xCoord);
+  let snake = new createSnake();
   $('html').keydown(enableFastFeedback);
-  createFood();
 });
