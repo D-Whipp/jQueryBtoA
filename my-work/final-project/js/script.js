@@ -13,6 +13,11 @@ $(document).ready(function () {
     });
   }
 
+  // function createSnakeTail() {
+  //   let snake = $('#snake');
+  //   snake.after("<div></div>")
+  // }
+
   function createFood() {
     // create food logic
     // here jQuery is used to create a div with the id of food
@@ -61,23 +66,26 @@ $(document).ready(function () {
     // snake moves right
     if (event.which === 39) {
       // setting right side boundary
-      if ($('#snake').css('margin-left') == '390px') {
+      if ($('#snake').css('margin-left') == '385px') {
         if (
-          sX <= fX + 5 &&
-          sX >= fX - 5 &&
-          sY <= fY + 5 &&
-          sY >= fY - 5
+          // you'll see this logic repeated, should be re-examined for DRY purposes
+          // this keeps track of the snakes position in relation to the food item
+          sX <= fX + 15 &&
+          sX >= fX - 15 &&
+          sY <= fY + 15 &&
+          sY >= fY - 15
         ) {
+          // here we reset the food item after eaten
           createFood();
         }
-        $('#snake').css('margin-left', '390px');
+        $('#snake').css('margin-left', '385px');
       } else {
         // snake moves right as long as it doesn't hit boundary
         if (
-          sX <= fX + 5 &&
-          sX >= fX - 5 &&
-          sY <= fY + 5 &&
-          sY >= fY - 5
+          sX <= fX + 15 &&
+          sX >= fX - 15 &&
+          sY <= fY + 15 &&
+          sY >= fY - 15
         ) {
           createFood();
         }
@@ -90,20 +98,20 @@ $(document).ready(function () {
     } else if (event.which === 37) {
       if ($('#snake').css('margin-left') == '5px') {
         if (
-          sX <= fX + 5 &&
-          sX >= fX - 5 &&
-          sY <= fY + 5 &&
-          sY >= fY - 5
+          sX <= fX + 15 &&
+          sX >= fX - 15 &&
+          sY <= fY + 15 &&
+          sY >= fY - 15
         ) {
           createFood();
         }
         $('#snake').css('margin-left', '5px');
       } else {
         if (
-          sX <= fX + 5 &&
-          sX >= fX - 5 &&
-          sY <= fY + 5 &&
-          sY >= fY - 5
+          sX <= fX + 15 &&
+          sX >= fX - 15 &&
+          sY <= fY + 15 &&
+          sY >= fY - 15
         ) {
           createFood();
         }
@@ -113,23 +121,23 @@ $(document).ready(function () {
     } else if (event.which === 40) {
       // snake moves up logic
       // setting bottom boundary to stop snake from moving
-      if ($('#snake').css('margin-top') == '390px') {
+      if ($('#snake').css('margin-top') == '385px') {
         if (
-          sX <= fX + 5 &&
-          sX >= fX - 5 &&
-          sY <= fY + 5 &&
-          sY >= fY - 5
+          sX <= fX + 15 &&
+          sX >= fX - 15 &&
+          sY <= fY + 15 &&
+          sY >= fY - 15
         ) {
           createFood();
         }
-        $('#snake').css('marmgin-top', '390px');
+        $('#snake').css('marmgin-top', '385px');
         // console.log('Y-Coord: ', snakeYCoord);
       } else {
         if (
-          sX <= fX + 5 &&
-          sX >= fX - 5 &&
-          sY <= fY + 5 &&
-          sY >= fY - 5
+          sX <= fX + 15 &&
+          sX >= fX - 15 &&
+          sY <= fY + 15 &&
+          sY >= fY - 15
         ) {
           createFood();
         }
@@ -139,20 +147,20 @@ $(document).ready(function () {
       // setting top boundary
       if ($('#snake').css('margin-top') == '5px') {
         if (
-          sX <= fX + 5 &&
-          sX >= fX - 5 &&
-          sY <= fY + 5 &&
-          sY >= fY - 5
+          sX <= fX + 15 &&
+          sX >= fX - 15 &&
+          sY <= fY + 15 &&
+          sY >= fY - 15
         ) {
           createFood();
         }
         $('snake').css('margin-top', '5px');
       } else {
         if (
-          sX <= fX + 5 &&
-          sX >= fX - 5 &&
-          sY <= fY + 5 &&
-          sY >= fY - 5
+          sX <= fX + 15 &&
+          sX >= fX - 15 &&
+          sY <= fY + 15 &&
+          sY >= fY - 15
         ) {
           createFood();
         }
