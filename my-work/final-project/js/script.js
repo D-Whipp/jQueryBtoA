@@ -8,15 +8,35 @@ $(document).ready(function () {
       height: '15px',
       'z-index': '1000',
       position: 'absolute',
-      marginTop: '10px',
-      marginLeft: '10px',
+      marginTop: '5px',
+      marginLeft: '5px',
     });
   }
 
-  // function createSnakeTail() {
-  //   let snake = $('#snake');
-  //   snake.after("<div></div>")
-  // }
+  function createSnakeTail() {
+    let snake = $('#snake');
+    snake.after('<div id="tail"></div>');
+    // let snakeHeadX = snake;
+    // let snakeHeadY = ;
+    let tail = $('#tail');
+    tail.css({
+      'background-color': '#eee',
+      width: '10px',
+      height: '10px',
+      'z-index': '1000',
+      position: 'absolute',
+      marginTop: '5px',
+      marginLeft: '5px',
+    });
+    tail.draggable({
+      drag: function (event, ui) {
+        tail.css({
+          top: ui.position.top,
+          left: ui.position.left,
+        });
+      },
+    });
+  }
 
   function createFood() {
     // create food logic
@@ -45,6 +65,7 @@ $(document).ready(function () {
       marginLeft: xCoord,
     });
     // end food logic
+    // createSnakeTail();
   }
 
   // snake movement logic
@@ -88,8 +109,10 @@ $(document).ready(function () {
           sY >= fY - 15
         ) {
           createFood();
+          // createSnakeTail();
         }
         $('#snake').css('margin-left', '+=5px');
+        console.log($('#snake'));
       }
       // end right movement logic
 
