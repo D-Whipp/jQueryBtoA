@@ -6,7 +6,7 @@
 
 This repository follows along with a udemy course teaching Front End Technology jQuery.
 
-![app snapshot](./images/app-snapshot.png)
+![app snapshot](./my-work//images/app-snapshot.png)
 
 ## Author
 
